@@ -3,18 +3,26 @@ var app = app || {};
 app.LibraryView = Backbone.View.extend({
 	el: '#books', 
 
-	initialize: function(initialBooks) {
-		this.collection = new app.Library(initialBooks); 
+	initialize: function() {
+		console.log('appLibraryViewInitialize'); 
+		console.log('this ...'); 
+		console.log(this); 
+
+		this.collection = new app.Library(); 
 		this.render(); 
 	}, 
 
 	render: function() {
+		console.log('appLibraryViewRender'); 
+
 		this.collection.each(function(item) {
 			this.renderBook(item); 
 		}, this); 
 	}, 
 
 	renderBook: function(item) {
+		console.log('appLibraryViewRenderBook'); 
+
 		var bookView = new app.BookView({
 			model: item
 		}); 
@@ -27,6 +35,8 @@ app.LibraryView = Backbone.View.extend({
 	}, 
 
 	addBook: function(e) {
+		console.log('appLibraryViewAddBook'); 
+
 		e.preventDefault(); 
 
 		var formData = {}; 
